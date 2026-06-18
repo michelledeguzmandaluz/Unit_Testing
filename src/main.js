@@ -7,6 +7,17 @@
 //if the input is grater or eqaul to 94, return 1.25
 //if the input is negative, return failure
 //if the result is a total of greater than one hundred, return overloaded
+//if the input is correct, return login successful
+//if the input is incorrect, return warning message
+//if the input is null, return error message
+//if the input is not a string, return error message
+//if the input is not a number, return error message
+//if the input is not a valid email, return error message
+//if the input is not a valid password return error message
+//if the input is not a valid email and password, return error message
+//if the input is a valid email and password, return login successful
+//if the input is a valid email and password but the email is incorrect, return warning message
+//if the input is a valid email and password but the password is incorrect, return warning message
 
 export function validatePassword(password) {
     if (password.length >= 8){
@@ -76,3 +87,22 @@ export function gradeCalculate(prelim, midterm, final, lab) {
 
     return 5.00;
 }
+
+export function login(email, password){
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    const passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
+    const correctEmail = "juandelacruz@email.com";
+    const correctPass = "Str0ngp@ssword";
+
+    if(!emailPattern.test(email)) throw new Error('Invalid email');
+
+    if(!passPattern.test(password)) throw new Error('Weak Password');
+
+    if(email !== correctEmail) return 'Incorrect email or password';
+    if(password !== correctPass) return 'Incorrect email or password';
+
+    return 'Login Successful';
+
+}
+
